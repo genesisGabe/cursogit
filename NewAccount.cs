@@ -36,11 +36,19 @@ namespace AnotherBank
         {
             if(txtName.Text != null && txtNumber.Text != null)
             {
-                string name = txtName.Text;
-                int number = Convert.ToInt32(txtNumber.Text);
+                try
+                {
+                    string name = txtName.Text;
+                    int number = Convert.ToInt32(txtNumber.Text);
 
-                Close();
+                    Close();
+                }
+                catch
+                {
+                    MessageBox.Show("Enter a name and number to go forward!");
+                }
             }
+           
         }
     }
 }
