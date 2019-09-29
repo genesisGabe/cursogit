@@ -34,6 +34,9 @@ namespace AnotherBank
 
         private void Button1_Click(object sender, EventArgs e)
         {
+
+            //Signing in a new account
+
             if(txtName.Text != null && txtNumber.Text != null)
             {
                 try
@@ -41,6 +44,8 @@ namespace AnotherBank
                     string name = txtName.Text;
                     int number = Convert.ToInt32(txtNumber.Text);
 
+                    Account a = new Account(name, number);
+                    Form1.accounts.Add(a);
                     Close();
                 }
                 catch
