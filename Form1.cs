@@ -73,7 +73,6 @@ namespace AnotherBank
         private void Button2_Click(object sender, EventArgs e)
         {
             NewAccount createNewAccount = new NewAccount();
-            accounts.Remove(a1);
             createNewAccount.ShowDialog();
         }
 
