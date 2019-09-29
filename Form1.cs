@@ -20,6 +20,7 @@ namespace AnotherBank
         public Form1()
         {
             InitializeComponent();
+            accounts.Add(a1);
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)
