@@ -14,13 +14,13 @@ namespace AnotherBank
     public partial class Form1 : Form
     {
        
-        public static List<Account> accounts = new List<Account>();
+        public static Dictionary<int, Account> accounts = new Dictionary <int, Account>();
 
         Account a1 = new Account("Gabriel Francisco", 17100, 4800.00);
         public Form1()
         {
             InitializeComponent();
-            accounts.Add(a1);
+            accounts.Add(Account.AccNumber+1, new Account("Gabriel Francisco", 17100, 4800.00));
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace AnotherBank
         private void Button1_Click(object sender, EventArgs e)
         {
             int textoNumero = Convert.ToInt32(textBox1.Text);
-            if (accounts.Exists(x => textoNumero == a1.Number))
+            if (accounts.ContainsKey(textoNumero))
             {
                 txtName.Text = a1.Name;
                 txtCash.Text = Convert.ToString(a1.Cash);
