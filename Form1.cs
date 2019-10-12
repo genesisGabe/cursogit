@@ -13,32 +13,17 @@ namespace AnotherBank
 {
     public partial class Form1 : Form
     {
-
-        
-
         public Form1()
         {
-
             //Initializing an account to test if the system is working properly
             InitializeComponent();
             Account.accounts.Add(new Account("Gabriel Francisco", 17100, 4800.00));
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        private void GroupBox1_Enter(object sender, EventArgs e) { }
+        private void Label2_Click(object sender, EventArgs e) { }
+        private void TextBox1_TextChanged(object sender, EventArgs e) { }
+        
         //Searching block---------------------------------------------------------------------------------
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -78,10 +63,7 @@ namespace AnotherBank
         }
         //======================================================================================================
 
-        private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
+        private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e) { }
 
         //TakeCash operation method==============================================================================
         private void BtnTake_Click(object sender, EventArgs e)
@@ -106,10 +88,7 @@ namespace AnotherBank
             NewAccount createNewAccount = new NewAccount();
             createNewAccount.ShowDialog(); 
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void Form1_Load(object sender, EventArgs e) { }
+       
     }
 }
