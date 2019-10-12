@@ -13,14 +13,15 @@ namespace AnotherBank
 {
     public partial class Form1 : Form
     {
-       
-        public static Dictionary<int, Account> accounts = new Dictionary <int, Account>();
 
-        Account a1 = new Account("Gabriel Francisco", 17100, 4800.00);
+        
+
         public Form1()
         {
+
+            //Initializing an account to test if the system is working properly
             InitializeComponent();
-            accounts.Add(Account.AccNumber+1, new Account("Gabriel Francisco", 17100, 4800.00));
+            Account.accounts.Add(new Account("Gabriel Francisco", 17100, 4800.00));
         }
 
         private void GroupBox1_Enter(object sender, EventArgs e)
@@ -38,42 +39,72 @@ namespace AnotherBank
 
         }
 
+        //Searching block---------------------------------------------------------------------------------
         private void Button1_Click(object sender, EventArgs e)
         {
+            //This is the search method using the lambda expression to search for 
+            //an account number, then showing in the respective text boxes.
+
             int textoNumero = Convert.ToInt32(textBox1.Text);
-            if (accounts.ContainsKey(textoNumero))
+            if (Account.accounts.Exists(i => i.Number == textoNumero))
             {
-                txtName.Text = a1.Name;
-                txtCash.Text = Convert.ToString(a1.Cash);
+                Account account = Account.accounts.Find(i => i.Number == textoNumero);
+                txtName.Text = account.Name;
+                txtCash.Text = Convert.ToString(account.Cash);
             }
             else
             {
                 MessageBox.Show("This account doesn't exist!");
                 textBox1.Text = null;
+                txtName.Text = null;
+                txtCash.Text = null;
             }
         }
 
+        //Deposit operation method==============================================================================
         private void BtnDeposit_Click(object sender, EventArgs e)
         {
-            double getCash = Convert.ToDouble(txtGetCash.Text);
-            a1.Deposit(getCash);
+            try
+            {
+                int textoNumero = Convert.ToInt32(textBox1.Text);
+                double getCash = Convert.ToDouble(txtGetCash.Text);
+                Account account = Account.accounts.Find(i => i.Number == textoNumero);
+                account.Deposit(getCash);
+            }
+            catch
+            {
+                MessageBox.Show("You need to search an account in the ''Account'' field to make operations!");
+            }
         }
+        //======================================================================================================
 
         private void BackgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
         {
 
         }
 
+        //TakeCash operation method==============================================================================
         private void BtnTake_Click(object sender, EventArgs e)
         {
-            double takeCash = Convert.ToDouble(txtTakeCash.Text);
-            a1.TakeOut(takeCash);
+            try
+            {
+                int textoNumero = Convert.ToInt32(textBox1.Text);
+                double takeCash = Convert.ToDouble(txtTakeCash.Text);
+                Account account = Account.accounts.Find(i => i.Number == textoNumero);
+                account.TakeOut(takeCash);
+            }
+            catch
+            {
+                MessageBox.Show("You need to search an account in the ''Account'' field to make operations!");
+            }
         }
+        //======================================================================================================
 
+        //Creating a new account in other window
         private void Button2_Click(object sender, EventArgs e)
         {
             NewAccount createNewAccount = new NewAccount();
-            createNewAccount.ShowDialog();
+            createNewAccount.ShowDialog(); 
         }
 
         private void Form1_Load(object sender, EventArgs e)

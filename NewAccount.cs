@@ -44,7 +44,7 @@ namespace AnotherBank
                     string name = txtName.Text;
                     int number = Convert.ToInt32(txtNumber.Text);
 
-                    Form1.accounts.Add(Account.AccNumber+1, new Account(name, number));
+                    Account.accounts.Add(new Account(name, number));
                     Close();
                 }
                 catch

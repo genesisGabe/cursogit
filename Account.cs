@@ -8,7 +8,7 @@ namespace AnotherBank
 {
     public class Account
     {
-        public static int AccNumber;
+        public static List<Account> accounts = new List<Account>();
         public string Name { get; private set; }
         public int Number { get; private set; }
 
